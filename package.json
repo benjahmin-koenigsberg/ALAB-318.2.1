@@ -1,0 +1,11 @@
+{
+  "name": "expresslab",
+  "version": "1.0.0",
+  "description": "Modulue 318 Express LAB #1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjahmin Koenigsberg",
+  "license": "MIT"
+}
