@@ -1,5 +1,7 @@
 const express = require('express')
 const path = require('path')
+const users = require('./users.js')
+
 
 //port
 const port = process.env.PORT || 3000
@@ -31,13 +33,21 @@ app.post('/contact', (req, res) => {
     res.send('Post request successfully recieved')
 })
 
+
+
 // app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname)))
 
 
-
+//image
 app.get('/image', ( req, res) => {
     res.sendFile(path.join(__dirname, './public/image.jpeg'))
+})
+
+
+//users from json placeholser
+app.get('/api/users', (req, res) => {
+    res.json(users)
 })
 
 
