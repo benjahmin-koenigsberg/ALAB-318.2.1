@@ -27,7 +27,18 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
+app.post('/contact', (req, res) => {
+    res.send('Post request successfully recieved')
+})
 
+// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname)))
+
+
+
+app.get('/image', ( req, res) => {
+    res.sendFile(path.join(__dirname, './public/image.jpeg'))
+})
 
 
 //start server
