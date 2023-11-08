@@ -1,18 +1,25 @@
 const express = require('express')
 const path = require('path')
 const users = require('./users.js')
-
+const logger = require("./middlewear/logger.js")
+//const moment = require('moment');
 
 //port
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 
 //init app
 const app = express();
 
+
+//init middlewear
+
+// app.use(logger)
+
 //pug view engine
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug');
+
+// app.set('views', path.join( __dirname, 'views'))
+// app.set('view engine', 'pug');
 
 //home route
 app.get('/', (req, res) => {
@@ -26,7 +33,7 @@ app.get('/about', (req, res) => {
 
 //contact route
 app.get('/contact', (req, res) => {
-    res.render('contact')
+    res.render('contact.pug')
 })
 
 app.post('/contact', (req, res) => {
@@ -35,20 +42,28 @@ app.post('/contact', (req, res) => {
 
 
 
-// app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname)))
+ //app.use(express.static(path.join(__dirname, 'views')));
+ app.use(express.static(path.join(__dirname, 'public')))
 
 
 //image
-app.get('/image', ( req, res) => {
+
+ app.get('/image', ( req, res) => {
     res.sendFile(path.join(__dirname, './public/image.jpeg'))
 })
 
 
 //users from json placeholser
+
 app.get('/api/users', (req, res) => {
     res.json(users)
 })
+
+//get single user
+app.get('/api/users/:id', (req, res)=>{
+    res.send(req.params.id)
+})
+
 
 
 //start server
