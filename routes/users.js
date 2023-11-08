@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 
 
-const users = require('../users')
+let users = require('../users')
 
 //users from json placeholser
 
@@ -29,6 +29,13 @@ router.post('/' , (req, res) => {
 //update members
 router.put('/:id', (req, res) => {
     res.json(users.filter(user => user.id === parseInt(req.params.id)))
+})
+
+//delete members
+router.delete('/:id', (req, res) => {
+    users = users.filter(user => user.id !== parseInt(req.params.id))
+    //users.filter( user => user.id !== parseInt(req.params.id) )
+    res.json(users)
 })
 
 module.exports = router;
