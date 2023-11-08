@@ -74,9 +74,7 @@ app.get('/api/users/:id', (req, res) => {
 })
 
 
-
-
 //start server
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}  🚀`)
 })
