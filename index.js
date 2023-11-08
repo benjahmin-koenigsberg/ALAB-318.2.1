@@ -54,10 +54,14 @@ app.get('/contact', (req, res) => {
 
 
 //image
-
  app.get('/image', ( req, res) => {
     res.sendFile(path.join(__dirname, './public/image.jpeg'))
 })
+
+//download
+app.get('/download',  (req, res) => {
+    res.download('./public/End-Seciesism.jpeg');
+});
 
 //members api routes
 app.use('/api/users', require('./routes/users'));

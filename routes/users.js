@@ -21,7 +21,7 @@ router.post('/' , (req, res) => {
     newUser.status = 'active';
     newUser.timeJoined = Date.now().toLocaleString();
     users.push(newUser)
-    res.json(users)
+    res.json({msg: "User successfully created", users })
 
 })
 
