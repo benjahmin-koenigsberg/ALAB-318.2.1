@@ -14,16 +14,20 @@ const app = express();
 
 //init middlewear
 
-//app.use(logger)
+//1 app.use(logger)
 
-// app.use((req, res)=>{
+//2  app.use((req, res)=>{
 //     console.log(req)
 // })
 
+//body parser middle ware
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+
 //pug view engine
 
-// app.set('views', path.join( __dirname, 'views'))
-// app.set('view engine', 'pug');
+app.set('views', path.join( __dirname, 'views'))
+app.set('view engine', 'pug');
 
 //pug home route
 
@@ -55,7 +59,7 @@ app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, './public/image.jpeg'))
 })
 
-
+//members api routes
 app.use('/api/users', require('./routes/users'));
 
 //start server
