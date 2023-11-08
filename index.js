@@ -14,31 +14,40 @@ const app = express();
 
 //init middlewear
 
-// app.use(logger)
+//app.use(logger)
+
+// app.use((req, res)=>{
+//     console.log(req)
+// })
 
 //pug view engine
 
 // app.set('views', path.join( __dirname, 'views'))
 // app.set('view engine', 'pug');
 
-//home route
+//pug home route
+
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-//about route
+//pug about route
+
 app.get('/about', (req, res) => {
     res.render('about')
 })
 
-//contact route
+//pug contact route
+
 app.get('/contact', (req, res) => {
     res.render('contact.pug')
 })
 
-app.post('/contact', (req, res) => {
-    res.send('Post request successfully recieved')
-})
+// post req
+
+// app.post('/contact', (req, res) => {
+//     res.send('Post request successfully recieved')
+// })
 
 
 
@@ -60,9 +69,10 @@ app.get('/api/users', (req, res) => {
 })
 
 //get single user
-app.get('/api/users/:id', (req, res)=>{
-    res.send(req.params.id)
+app.get('/api/users/:id', (req, res) => {
+    res.json(users.filter(user => user.id === parseInt(req.params.id)))
 })
+
 
 
 
