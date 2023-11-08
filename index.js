@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const users = require('./users.js')
+// const users = require('./users.js')
 const logger = require("./middlewear/logger.js")
 //const moment = require('moment');
 
@@ -43,12 +43,6 @@ app.get('/contact', (req, res) => {
     res.render('contact.pug')
 })
 
-// post req
-
-// app.post('/contact', (req, res) => {
-//     res.send('Post request successfully recieved')
-// })
-
 
 
  //app.use(express.static(path.join(__dirname, 'views')));
@@ -62,17 +56,7 @@ app.get('/contact', (req, res) => {
 })
 
 
-//users from json placeholser
-
-app.get('/api/users', (req, res) => {
-    res.json(users)
-})
-
-//get single user
-app.get('/api/users/:id', (req, res) => {
-    res.json(users.filter(user => user.id === parseInt(req.params.id)))
-})
-
+app.use('/api/users', require('./routes/users'));
 
 //start server
 app.listen(port, () => {
